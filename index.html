@@ -4,26 +4,26 @@
   <style>
   .floating-img {
     position: fixed;
-    bottom: -50px;
-    width: 28px;
+    top: -60px;                 /* bắt đầu từ trên trời */
+    width: 32px;
     height: auto;
     pointer-events: none;
-    animation: flyUp linear forwards;
-    opacity: 0.9;
-    z-index: 9999;
+    animation: fallDown linear forwards;
+    opacity: 1;
+    z-index: 999999;            /* LUÔN nổi trên chữ */
   }
 
-  @keyframes flyUp {
+  @keyframes fallDown {
     0% {
-      transform: translateY(0) scale(0.7);
+      transform: translateY(0) scale(0.9);
       opacity: 0;
     }
     10% {
       opacity: 1;
     }
     100% {
-      transform: translateY(-110vh) scale(1.2);
-      opacity: 0;
+      transform: translateY(110vh) scale(1.1);
+      opacity: 1;
     }
   }
 </style>
@@ -110,7 +110,7 @@
   </div>
   <script type="module" src="/static/js/app.js"></script>
   <script type="module" src="/static/js/home.js"></script>
-    <script>
+  <script>
   const imgs = [
     "/static/images/thuong1.jpg",
     "/static/images/thuong2.jpg"
@@ -120,14 +120,21 @@
     const img = document.createElement("img");
     img.src = imgs[Math.floor(Math.random() * imgs.length)];
     img.className = "floating-img";
-    img.style.left = Math.random() * 100 + "vw";
+
+    // vị trí rơi ngang màn hình
+    img.style.left = Math.random() * 90 + "vw";
+
+    // tốc độ rơi
     img.style.animationDuration = (3 + Math.random() * 2) + "s";
 
     document.body.appendChild(img);
 
-    setTimeout(() => img.remove(), 6000);
-  }, 900);
+    setTimeout(() => {
+      img.remove();
+    }, 7000);
+  }, 800);
 </script>
+
 
   </body>
 </html>
