@@ -4,30 +4,24 @@
   <style>
   .floating-img {
     position: fixed;
-    top: -60px;                 /* bắt đầu từ trên trời */
-    width: 32px;
+    top: -100px;
+    width: 100px;              /* ⬅️ TO HƠN (trước 60px) */
     height: auto;
     pointer-events: none;
     animation: fallDown linear forwards;
+    z-index: 9999999;
     opacity: 1;
-    z-index: 999999;            /* LUÔN nổi trên chữ */
   }
 
   @keyframes fallDown {
     0% {
-      transform: translateY(0) scale(0.9);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
+      transform: translateY(0) scale(1);
     }
     100% {
-      transform: translateY(110vh) scale(1.1);
-      opacity: 1;
+      transform: translateY(120vh) scale(1.05);
     }
   }
 </style>
-
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -121,20 +115,17 @@
     img.src = imgs[Math.floor(Math.random() * imgs.length)];
     img.className = "floating-img";
 
-    // vị trí rơi ngang màn hình
-    img.style.left = Math.random() * 90 + "vw";
+    img.style.left = Math.random() * 80 + "vw";
 
-    // tốc độ rơi
-    img.style.animationDuration = (3 + Math.random() * 2) + "s";
+    // ⬇️ RƠI CHẬM HƠN (6–8 giây)
+    img.style.animationDuration = (6 + Math.random() * 2) + "s";
 
     document.body.appendChild(img);
 
     setTimeout(() => {
       img.remove();
-    }, 7000);
-  }, 800);
+    }, 9000);
+  }, 1200); // xuất hiện chậm hơn
 </script>
-
-
   </body>
 </html>
