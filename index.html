@@ -5,12 +5,20 @@
   .floating-img {
     position: fixed;
     top: -100px;
-    width: 100px;              /* ⬅️ TO HƠN (trước 60px) */
+    width: 100px;
     height: auto;
     pointer-events: none;
     animation: fallDown linear forwards;
     z-index: 9999999;
     opacity: 1;
+
+    /* ✨ VIỀN SÁNG */
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 0, 80, 0.7),
+      0 0 35px rgba(255, 0, 80, 0.5);
   }
 
   @keyframes fallDown {
@@ -22,6 +30,7 @@
     }
   }
 </style>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
