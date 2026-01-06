@@ -1,6 +1,33 @@
 <!-- Clone by @WusThanhDieu -->
 <!DOCTYPE html>
 <html lang="en" class="dark">
+  <style>
+  .floating-img {
+    position: fixed;
+    bottom: -50px;
+    width: 28px;
+    height: auto;
+    pointer-events: none;
+    animation: flyUp linear forwards;
+    opacity: 0.9;
+    z-index: 9999;
+  }
+
+  @keyframes flyUp {
+    0% {
+      transform: translateY(0) scale(0.7);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+</style>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -83,5 +110,24 @@
   </div>
   <script type="module" src="/static/js/app.js"></script>
   <script type="module" src="/static/js/home.js"></script>
+    <script>
+  const imgs = [
+    "/static/images/ảnh 1.png",
+    "/static/images/ảnh 2.png"
+  ];
+
+  setInterval(() => {
+    const img = document.createElement("img");
+    img.src = imgs[Math.floor(Math.random() * imgs.length)];
+    img.className = "floating-img";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.animationDuration = (3 + Math.random() * 2) + "s";
+
+    document.body.appendChild(img);
+
+    setTimeout(() => img.remove(), 6000);
+  }, 900);
+</script>
+
   </body>
 </html>
